@@ -1,1 +1,4 @@
 # hybrid-fs
+initial idea/project pitch: a filesystem "driver" that makes a given collection of files be viewed as FAT, NTFS, etc; and handles a subset of shared meta-data to be shared between multiple "filesystem views", such that the partition can be opened by a native filesystem driver, and all changes will made "copy on write" some how. In order for changes to a "filesystem view" by a native drivers to be visible by other views/drivers, the filesystem must be mounted by the special driver to "syncronize" all the views. If a native driver cannot be coerced into enforcing copy-on-write, the user should be warned and advised to only mount as read only to prevent corruption.
+
+the filesystem could have for example git-like-functionality integrated into the special sync driver. or other "version history" capabilities, if native drivers are required to be either COW or readonly.
